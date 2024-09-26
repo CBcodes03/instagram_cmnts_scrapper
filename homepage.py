@@ -29,6 +29,8 @@ def run():
     email = st.text_input("Enter your email:", type='default')
     password = st.text_input("Enter your password:", type='password')
     url = st.text_input("Enter a URL:", type='default')
+    st.write("higher the scroll count higher the number of comments fetched and higher the execution time !")
+    scrollcount = st.number_input("Scroll count:", min_value=0, max_value=100, step=1, format="%d")
     
     if st.button("Submit!"):
         time.sleep(1)

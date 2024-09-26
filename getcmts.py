@@ -54,16 +54,18 @@ def cmntsget(un,pas,pu):
             driver.get(pu)
             time.sleep(1)
             print("loaded post page")
+            #time.sleep(500)
             #load comments
             time.sleep(1)
-            se=driver.find_element(By.XPATH,"/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div[1]/div/div[2]/div/div[2]")
+            se=driver.find_element(By.XPATH,"/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div[1]/div/div[2]/div/div[2]")
             time.sleep(5)
             scroll_script = "arguments[0].scrollTo(0, arguments[0].scrollHeight);"
-            for i in range(2):
+            for i in range(20):
                 driver.execute_script(scroll_script, se)
                 time.sleep(1)
+            time.sleep(10)
             print("scrolling done!")
-            cs = driver.find_element(By.XPATH,"/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div[1]/div/div[2]/div/div[2]/div")
+            cs = driver.find_element(By.XPATH,"/html/body/div[2]/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div/div[1]/div/div[2]/div/div[2]/div/div[2]")
             a=cs.text.split("\n")
             print("got em cmnts!")
             p1=r'View all.* replies$'
@@ -105,3 +107,5 @@ def cmntsget(un,pas,pu):
                     data.update({u:s})
             print(data)
             return data
+if __name__ == '__main__':
+    cmntsget()
